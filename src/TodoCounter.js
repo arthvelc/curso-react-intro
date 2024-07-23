@@ -1,6 +1,6 @@
-function TodoCounter(props){
+function TodoCounter({total, completed}){
     return (
-      <h1>Has completado {props.completed} de {props.todos} Tareas.</h1>
+      <h1>Has completado {completed} de {total} Tareas.</h1>
     );
 }
 

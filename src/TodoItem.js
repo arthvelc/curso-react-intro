@@ -1,9 +1,9 @@
 
-function TodoItem(){
+function TodoItem({ text }){
     return(
       <li>
         <span>V</span>
-        <p>Llorar poque no tengo chamba</p>
+        <p>{ text }</p>
         <span>X</span>
       </li>
     );
