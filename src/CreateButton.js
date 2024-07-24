@@ -1,6 +1,10 @@
-function CreateButton(){
+import './CreateButton.css';
+
+function CreateButton({buttonName}){
     return (
-        <button>Crear Tarea</button>
+    <button>
+        <span>{buttonName}</span>
+    </button>
     );
 }
 

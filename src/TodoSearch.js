@@ -1,6 +1,12 @@
-function TodoSearch(){
+import './TodoSearch.css';
+
+function TodoSearch({placeholder}){
     return(
-     <input placeholder = {"Indroduce un TODO"}/>
+        <div className={"form-control"}>
+            <input className={"input input-alt"} placeholder={ placeholder } required={""} type={"text"}></input>
+            <span className={"input-border input-border-alt"}></span>
+        </div>
+      
     );
  }
 

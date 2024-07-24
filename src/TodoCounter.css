@@ -1,0 +1,8 @@
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #131010;
+    background: linear-gradient(360deg, #AF40FF, #5B42F3, #00DDEB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+}
