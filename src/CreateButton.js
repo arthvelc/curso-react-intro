@@ -2,8 +2,8 @@ import './CreateButton.css';
 
 function CreateButton({buttonName}){
     return (
-    <button>
-        <span>{buttonName}</span>
+    <button className="create-btn">
+        <span className='create-btn-span'>{buttonName}</span>
     </button>
     );
 }

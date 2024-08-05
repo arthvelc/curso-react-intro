@@ -1,4 +1,4 @@
-button {
+.create-btn {
     align-items: center;
     background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
     border: 0;
@@ -23,14 +23,14 @@ button {
     transition: all .3s;
    }
    
-   button:active,
-   button:hover {
+   .create-btn:active,
+   .create-btn:hover {
     outline: 0;
     color: #fff;
     
    }
    
-   button span {
+   .create-btn span {
     background-color: rgb(255, 255, 255);
     padding: 16px 24px;
     border-radius: 6px;
@@ -39,10 +39,10 @@ button {
     transition: 300ms;
    }
    
-   button:hover span {
+   .create-btn:hover span {
     background: none;
    }
    
-   button:active {
+   .create-btn:active {
     transform: scale(0.95);
    }

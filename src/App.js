@@ -8,6 +8,7 @@ import { CreateButton } from './CreateButton';
 import { CreateNewTask } from './CreateNewTask';
 import { TodoBox } from './TodoBox';
 import { ButtonDelete } from './ButtonDelete';
+import { NavBar } from './NavBar';
 
 //Array de objetos con las tareas por defecto
 const defaultTodos = [
@@ -18,14 +19,20 @@ const defaultTodos = [
   {text: 'Amar y respetar mucho a la mujer mas hermosa que existe en el mundo (Ollincita 😍)', completed: false}
 ]
 
+
 //Funcion que retorna el componente App
 function App() {
   return (
     <>
+      <NavBar/>
+      <main className='main-container'>
+
       <div>
-        <CreateNewTask placeholder={"Introduce una tarea"}>
+        <CreateNewTask placeholder={"Introduce una tarea"} 
+        >
           <CreateButton buttonName={"Crear tarea"}/> 
         </CreateNewTask>
+        
       </div>
 
       <div>
@@ -38,11 +45,18 @@ function App() {
                 key={todo.text}
                 text={todo.text}
                 completed={todo.completed}
-              ><ButtonDelete/></TodoItem>
+                children={<ButtonDelete />}
+              ></TodoItem>
             ))}
           </TodoList>
         </TodoBox>
       </div>  
+
+      </main>
+
+
+      
+      
     </>
   );
 }
