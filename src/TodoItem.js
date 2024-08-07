@@ -1,13 +1,17 @@
 import './TodoItem.css';
 
-function TodoItem({ text , checked, children}){
+function TodoItem({ text , children, checked, completed, setCompleted }) {
     return(
       <li className='todo-item'>
         <p className="todo-item--complete">{text}</p>
 
         <label className={"container"}>
 
-          <input className = "container-checked"checked={ checked } type={"checkbox"} />
+          <input className = "container-checked"
+          checked={ completed } 
+
+          type={"checkbox"} 
+          />
 
           <div>{ children}</div>
             

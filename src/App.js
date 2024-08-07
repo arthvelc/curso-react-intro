@@ -15,7 +15,7 @@ import { NavBar } from './NavBar';
 const defaultTodos = [
   {text: 'Llorar por no conseguir chambita', completed: true},
   {text: 'Completar el curso de React', completed: false},
-  {text: 'Postular en computrabajo y occ', completed: false},
+  {text: 'Postular en computrabajo y occ', completed: true},
   {text: 'Consentir a mi nena hermosa (Ollincita 😍)', completed: false},
   {text: 'Amar y respetar mucho a la mujer mas hermosa que existe en el mundo (Ollincita 😍)', completed: true}
 ]
@@ -25,15 +25,14 @@ const defaultTodos = [
 function App() {
   const [newTask, setNewTask] = React.useState("");
   const [tasks, setTasks] = React.useState(defaultTodos);
+  const [searchedTasks, setSearchedTasks] = React.useState("");
+  
 
   const completedTasks = tasks.filter(tasks => !!tasks.completed).length;
-  console.log('Total de tareas completadas:', completedTasks);
-
   const totalTasks = tasks.length;
-  console.log('Total de tareas:', totalTasks);
+  const searchedTasksResult = tasks.filter(task => task.text.toLowerCase().includes(searchedTasks.toLowerCase()));
 
-  console.log(newTask);
-
+  console.log(searchedTasksResult);
 
   return (
     <>
@@ -42,7 +41,7 @@ function App() {
 
       <div>
         <CreateNewTask placeholder={"Introduce una tarea"} 
-        newTask = { newTask}
+        newTask = { newTask }
         setNewTask = { setNewTask }>
           <CreateButton buttonName={"Crear tarea"}/> 
         </CreateNewTask>
@@ -52,14 +51,17 @@ function App() {
       <div>
         <TodoBox>
           <TodoCounter completed={ completedTasks } total={totalTasks}/>
-          <TodoSearch placeholder={"Busca tu tarea"} />
+          <TodoSearch placeholder={"Busca tu tarea"} 
+          searchedTasks = { searchedTasks }
+          setSearchedTasks = { setSearchedTasks }
+          />
           <TodoList>
-            {defaultTodos.map(todo => (
+            {searchedTasksResult.map( task => (
               <TodoItem
                 
-                key={todo.text}
-                text={todo.text}
-                completed={todo.completed}
+                key={task.text}
+                text={task.text}
+                completed={task.completed}
                 children={<ButtonDelete />}
               ></TodoItem>
             ))}
@@ -68,10 +70,6 @@ function App() {
       </div>  
 
       </main>
-
-
-      
-      
     </>
   );
 }
