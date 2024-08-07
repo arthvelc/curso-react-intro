@@ -3,8 +3,8 @@ import "./NavBar.css"
 function NavBar(){
     return (
         /* From Uiverse.io by ErzenXz */ 
-<div class="in-put">
-  <button class="value">
+<div className="in-put">
+  <button className="value">
     <svg
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,7 @@ function NavBar(){
     </svg>
     Public profile
   </button>
-  <button class="value">
+  <button className="value">
     <svg id="Line" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
       <path
         fill="#7D8590"
@@ -32,7 +32,7 @@ function NavBar(){
     </svg>
     Account
   </button>
-  <button class="value">
+  <button className="value">
     <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
       <path
         fill="#7D8590"
@@ -41,7 +41,7 @@ function NavBar(){
     </svg>
     Appearance
   </button>
-  <button class="value">
+  <button className="value">
     <svg id="svg8" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
       <g id="layer1" transform="translate(-33.022 -30.617)">
         <path
@@ -53,7 +53,7 @@ function NavBar(){
     </svg>
     Accessibility
   </button>
-  <button class="value">
+  <button className="value">
     <svg fill="none" viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
       <path
         clip-rule="evenodd"

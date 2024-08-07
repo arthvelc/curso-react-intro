@@ -3,7 +3,7 @@ import './TodoItem.css';
 function TodoItem({ text , checked, children}){
     return(
       <li className='todo-item'>
-        <p>{text}</p>
+        <p className="todo-item--complete">{text}</p>
 
         <label className={"container"}>
 
