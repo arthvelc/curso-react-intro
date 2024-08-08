@@ -8,7 +8,6 @@ import { TodoList } from './TodoList';
 import { CreateButton } from './CreateButton';
 import { CreateNewTask } from './CreateNewTask';
 import { TodoBox } from './TodoBox';
-import { ButtonDelete } from './ButtonDelete';
 import { NavBar } from './NavBar';
 
 //Array de objetos con las tareas por defecto
@@ -24,7 +23,9 @@ const defaultTodos = [
 //Funcion que retorna el componente App
 function App() {
   const [newTask, setNewTask] = React.useState("");
+  //Estas son las tareas que se van a mostrar en la lista
   const [tasks, setTasks] = React.useState(defaultTodos);
+  //Este es el valor que buscaré dentro de la lista de tareas
   const [searchedTasks, setSearchedTasks] = React.useState("");
   
 
@@ -32,7 +33,18 @@ function App() {
   const totalTasks = tasks.length;
   const searchedTasksResult = tasks.filter(task => task.text.toLowerCase().includes(searchedTasks.toLowerCase()));
 
-  console.log(searchedTasksResult);
+  tasks.forEach(task => {
+    console.log(task.completed);
+  })
+
+  const taskDone = (text) => {
+    const newTasks = [...tasks];
+    const taskIndex = newTasks.findIndex(task => task.text === text);
+
+    newTasks[taskIndex].completed = !newTasks[taskIndex].completed;
+    setTasks(newTasks);
+  }
+
 
   return (
     <>
@@ -58,11 +70,11 @@ function App() {
           <TodoList>
             {searchedTasksResult.map( task => (
               <TodoItem
-                
                 key={task.text}
                 text={task.text}
                 completed={task.completed}
-                children={<ButtonDelete />}
+                OnComplete = { ()  => taskDone(task.text) }
+              
               ></TodoItem>
             ))}
           </TodoList>
