@@ -45,6 +45,11 @@ function App() {
     setTasks(newTasks);
   }
 
+  const deleteTask = (text) =>{
+    const newTasks = tasks.filter(task => task.text !== text);
+    setTasks(newTasks);
+  }
+
 
   return (
     <>
@@ -74,7 +79,7 @@ function App() {
                 text={task.text}
                 completed={task.completed}
                 OnComplete = { ()  => taskDone(task.text) }
-              
+                deleteTask = { () => deleteTask(task.text)}
               ></TodoItem>
             ))}
           </TodoList>
