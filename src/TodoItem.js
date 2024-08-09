@@ -10,10 +10,9 @@ function TodoItem({ text , completed, onComplete, deleteTask}) {
         <label className={"container"}>
 
           <input className = "container-checked"
-          defaultChecked = { !completed}
+          defaultChecked = { completed }
           type={"checkbox"} 
-          onChange ={ onComplete }
-          
+          onChange ={onComplete}
           />
 
           <button className="delete-button "

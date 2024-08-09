@@ -15,34 +15,37 @@ const defaultTodos = [
   {text: 'Llorar por no conseguir chambita', completed: true},
   {text: 'Completar el curso de React', completed: false},
   {text: 'Postular en computrabajo y occ', completed: true},
-  {text: 'Consentir a mi nena hermosa (Ollincita 😍)', completed: false},
+  {text: 'Consentir a mi nena hermosa (Ollincita 😍)', completed: true},
   {text: 'Amar y respetar mucho a la mujer mas hermosa que existe en el mundo (Ollincita 😍)', completed: true}
 ]
 
 
 //Funcion que retorna el componente App
 function App() {
+  // Este es el valor que se va a mostrar en el input de la tarea
   const [newTask, setNewTask] = React.useState("");
   //Estas son las tareas que se van a mostrar en la lista
   const [tasks, setTasks] = React.useState(defaultTodos);
   //Este es el valor que buscaré dentro de la lista de tareas
   const [searchedTasks, setSearchedTasks] = React.useState("");
   
-
+  //Contador de tareas completadas
   const completedTasks = tasks.filter(tasks => !!tasks.completed).length;
   const totalTasks = tasks.length;
   const searchedTasksResult = tasks.filter(task => task.text.toLowerCase().includes(searchedTasks.toLowerCase()));
 
-  tasks.forEach(task => {
-    console.log(task.completed);
-  })
+  const congratsMessage = (totalTasks, completedTasks) => totalTasks === completedTasks ? "Felicidades, has completado todas tus tareas mi amor 🖤" : " ";
 
-  const taskDone = (text) => {
-    const newTasks = [...tasks];
-    const taskIndex = newTasks.findIndex(task => task.text === text);
-
-    newTasks[taskIndex].completed = !newTasks[taskIndex].completed;
-    setTasks(newTasks);
+  const toggleTaskCompletition = (text) => {
+    const newTask = tasks.map(task => {
+      if(task.text === text){
+        return task.completed? {...task, completed: true} : {...task, completed: false}
+        // return {...task, completed: !task.comple};
+      }
+      console.log(task);
+      return task;
+    });
+    setTasks(newTask);
   }
 
   const deleteTask = (text) =>{
@@ -67,7 +70,11 @@ function App() {
 
       <div>
         <TodoBox>
-          <TodoCounter completed={ completedTasks } total={totalTasks}/>
+          <TodoCounter 
+          completed={ completedTasks } 
+          total={totalTasks}
+          message = {congratsMessage(totalTasks, completedTasks) }
+          />
           <TodoSearch placeholder={"Busca tu tarea"} 
           searchedTasks = { searchedTasks }
           setSearchedTasks = { setSearchedTasks }
@@ -78,7 +85,7 @@ function App() {
                 key={task.text}
                 text={task.text}
                 completed={task.completed}
-                OnComplete = { ()  => taskDone(task.text) }
+                OnComplete = { ()  => toggleTaskCompletition(task.text) }
                 deleteTask = { () => deleteTask(task.text)}
               ></TodoItem>
             ))}
