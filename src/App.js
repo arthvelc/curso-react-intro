@@ -39,10 +39,9 @@ function App() {
   const toggleTaskCompletition = (text) => {
     const newTask = tasks.map(task => {
       if(task.text === text){
-        return task.completed? {...task, completed: true} : {...task, completed: false}
+        return { ...task, completed: !task.completed };
         // return {...task, completed: !task.comple};
       }
-      console.log(task);
       return task;
     });
     setTasks(newTask);
